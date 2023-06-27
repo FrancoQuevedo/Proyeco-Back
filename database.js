@@ -1,4 +1,3 @@
-//dataBASE .
 const mysql = require("mysql2");
 
 
@@ -11,7 +10,7 @@ const connection = mysql.createConnection({
 });
 
 
-// Verificación de la CONEXION a la base de datos//
+// CONEXION a la base de datos//
 connection.connect((err) => {
     if (err) throw err;
 
