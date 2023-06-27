@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+    {{!--
+    <link rel="stylesheet" href="/assets/css/bootstrap.css"> --}}
+    <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+ {{>navbar}}
+
+    <div class="container p-4">
+        <h2> List your Links </h2>
+        <button class="btn btn-outline-dark" data-toggle="modal" data-target="#myModalAdd">Add new link</button>
+
+        <table class="table table-striped" id="mytable">
+            <thead>
+                <th> Link id</th>
+                <th>  Url</th>
+                <th> Link Nombre</th>
+                <th> Action</th>
+
+            </thead>
+            <tbody>
+                {{#each results}}
+                <tr>
+                    <td> {{ link_id }}</td>
+                    <td> {{ link_url }}</td> 
+                    <td> {{ link_nombre }}</td> 
+
+                    <td><a href="javascript:void(0);" class="btn btn-dark edit" data-id="{{ link_id}}"
+                            data-link_url="{{ link_url}}"
+                            data-link_nombre="{{ link_nombre}}">Edit</a>
+                        <a href="javascript:void(0);" class="btn btn-danger delete" data-id="{{ link_id}}">
+                            Delete</a> 
+                    </td>
+
+                </tr>
+
+                {{/each}}
+            </tbody>
+
+        </table>
+    </div>
+
+
+
+    <!-- MODAL AGREGAR PRODUCTOS -->
+   <form action="/save" method="post">       
+            <div class="modal fade bg-info" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                <h5 class="modal-title" id="exampleModalLabel">Add Link</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" name="link_url" class="form-control" placeholder="Url Link" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="link_nombre" class="form-control" placeholder="Name" required>
+                </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+            </div>
+            </div>
+        </form>
+
+
+    {{!-- EDITAR--}}
+
+    <form action="/update" method="post">
+        <div class="modal fade bg-info " id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Link</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" name="link_url" class="form-control link_url" placeholder="Link Url" required>
+                </div>
+
+                <div class="form-group ">
+                    <input type="text" name="link_nombre" class="form-control nombre" placeholder="Nombre" required>
+                </div>
+                </div>
+                <div class="modal-footer">
+                <input type="hidden" name="id" class="link_id">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+            </div>
+            </div>
+    </form>
+
+    {{!-- Modal delete --}}
+
+   <form id="add-row-form" action="/delete" method="post">
+            <div class="modal fade bg-info " id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Borrar link</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                    <strong>¿Are you sure to delete this link?</strong>
+                    </div>
+                    <div class="modal-footer">
+                    <input type="hidden" name="link_id" class="form-control link_id2" required>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Delete</button>
+                    </div>
+                        </div>
+                </div>
+            </div>
+        </form>
+
+    <script src="/assets/js/jquery-3.3.1.js"></script>
+    <script src="/assets/js/bootstrap.js"></script>
+
+    <script>
+
+        
+$(document).ready(function(){
+    //Mostrar datos al modal para editar registro//
+
+    $('#mytable').on('click', '.edit', function(){
+        let link_id = $(this).data('id');
+        let link_url = $(this).data('link_url');
+        let link_nombre = $(this).data('link_nombre');
+        $('#EditModal').modal('show');
+        $('.link_url').val(link_url);
+        $('.nombre').val(link_nombre);
+        $('.link_id').val(link_id);
+    })
+
+
+    $('#mytable').on('click', '.delete', function(){
+        let link_id = $(this).data('id');
+        $('#DeleteModal').modal('show');
+        $('.link_id2').val(link_id);
+
+    })
+})
+
+
+</script>
+
+
+
+</body>
+
+</html>

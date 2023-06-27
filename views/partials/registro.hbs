@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+        integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Mochiy+Pop+One&family=Playfair+Display:ital@1&family=Poppins:ital,wght@0,100;1,500&family=Ubuntu:ital,wght@0,700;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+
+
+
+    <div class="container">
+        <div id="error"></div>
+        <div class="cold-sm-6 mx-5">
+            <div class="col sm-6 mx-5">
+                <div class="card mt-5"></div>
+                <div class="card-body"></div>
+                <h1 class="text center">
+                    <span class="fa fa-sign-in"></span> Login
+                </h1>
+
+                <form action="/login" method="post">
+                    <div class="form-group"" ">
+                        <label for="username">Name</label>
+                        <input type="username" name="username" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="paswword">Password</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                    <div>
+
+          <div class="error-message alert-info" >{{ errorMessage }}</div>          
+           {{!--  <div class="error-message bg-light"></div> --}}
+                    
+                        <input type="submit" class="btn btn-dark btn-lg" value="Login">
+                    </div>
+
+                </form>
+
+
+
+
+                <script src="/assets/js/jquery-3.3.1.js"></script>
+                <script src="/assets/js/bootstrap.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+                    crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
