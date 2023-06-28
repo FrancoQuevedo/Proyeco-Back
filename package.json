@@ -19,5 +19,13 @@
     "nodemon": "^2.0.22"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrancoQuevedo/Proyeco-Back.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FrancoQuevedo/Proyeco-Back/issues"
+  },
+  "homepage": "https://github.com/FrancoQuevedo/Proyeco-Back#readme",
   "description": ""
 }

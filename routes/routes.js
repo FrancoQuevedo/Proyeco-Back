@@ -12,6 +12,7 @@ let errorMessage = "";
 //*****Links ***  */
 
 //RUTA//
+
 // SELECT
 session.get('/link', (req, res) => {
     let sql = "SELECT * FROM links";
